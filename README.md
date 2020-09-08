@@ -2,6 +2,6 @@ AutoCAN
 ===
 Arduino library for the AutoCAN suite of in-vehicle CAN bus microcontrollers.
 
-* srenner/AutoCAN_Meguinauge
-* srenner/AutoCAN_SensorHub
-* srenner/AutoCAN_Epasuino
+* github.com/srenner/AutoCAN_Meguinauge
+* github.com/srenner/AutoCAN_SensorHub
+* github.com/srenner/AutoCAN_Epasuino
