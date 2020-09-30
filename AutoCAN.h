@@ -7,7 +7,18 @@
 
 #define CAN_ERROR_MSG_ID            911     //message id for errors related to can bus comms, etc.
 
-#define VSS_PULSE_PER_MILE          8000    //used to determine both speed and distance, Ford is typically 8000, GM is sometimes 4000
+#define VSS_PULSE_PER_MILE          8000    //used to determine both speed and distance, Ford is typically 8000, GM is sometimes 4000 or 16000
+
+
+#define MS_BASE_ID      1512  // set this to match the MegaSquirt setting, default is 1512
+#define MSG_MS_BASE     0     // array index of allCanMessages[] to find the base id
+#define MSG_MS_PLUS1    1     // array index 
+#define MSG_MS_PLUS2    2     // etc...
+#define MSG_MS_PLUS3    3     // ...
+#define MSG_MS_PLUS4    4     // last element of array
+
+#define SH_BASE_ID      600     // first can msg id used by AutoCAN_SensorHub
+#define MSG_SH_BASE     0       //array index of TBD array to find the base id
 
 char *epasModeDescriptions[] = { "Manual Steering", "Firm Steering",  "Sport+ Steering", "Sport Steering", "Touring Steering", "Comfort Steering"};
 
@@ -79,25 +90,26 @@ struct EngineVariable
 const byte ENGINE_VARIABLE_COUNT = 20;
 EngineVariable* allGauges[ENGINE_VARIABLE_COUNT];
                             //label, current, previous, min, max, decimal, good, low, high, can
-EngineVariable engine_map   = {"MAP", 0.0, 0.0, 15.0, 250.0, 1, 0, 0, 0, 0};     //manifold absolute pressure
-EngineVariable engine_rpm   = {"RPM", 0.0, 0.0, 700.0, 6000.0, 0, 0, 0, 0, 0};   //engine rpm
-EngineVariable engine_clt   = {"CLT", 0.0, 0.0, 20.0, 240.0, 0, 0, 0, 0, 0};     //coolant temp
-EngineVariable engine_tps   = {"TPS", 0.0, 0.0, 0.0, 100.0, 0, 0, 0, 0, 0};      //throttle position
-EngineVariable engine_pw1   = {"PW1", 0.0, 0.0, 0.0, 20.0, 2, 0, 0, 0, 0};       //injector pulse width bank 1
-EngineVariable engine_pw2   = {"PW2", 0.0, 0.0, 0.0, 20.0, 2, 0, 0, 0, 0};       //injector pulse width bank 2
-EngineVariable engine_iat   = {"IAT", 0.0, 0.0, 40.0, 150.0, 0, 0, 0, 0, 0};     //intake air temp aka 'mat'
-EngineVariable engine_adv   = {"ADV", 0.0, 0.0, 10.0, 40.0, 1, 0, 0, 0, 0};      //ignition advance
-EngineVariable engine_tgt   = {"TGT", 0.0, 0.0, 10.0, 20.0, 1, 0, 0, 0, 0};      //afr target
-EngineVariable engine_afr   = {"AFR", 0.0, 0.0, 10.0, 20.0, 1, 0, 0, 0, 0};      //air fuel ratio
-EngineVariable engine_ego   = {"EGO", 0.0, 0.0, 70.0, 130.0, 0, 0, 0, 0, 0};     //ego correction %
-EngineVariable engine_egt   = {"EGT", 0.0, 0.0, 0.0, 2000.0, 0, 0, 0, 0, 0};     //exhaust gas temp
-EngineVariable engine_pws   = {"PWS", 0.0, 0.0, 0.0, 20.0, 2, 0, 0, 0, 0};       //injector pulse width sequential
-EngineVariable engine_bat   = {"BAT", 0.0, 0.0, 11.0, 15.0, 1, 0, 0, 0, 0};      //battery voltage
-EngineVariable engine_sr1   = {"SR1", 0.0, 0.0, 0.0, 999.0, 1, 0, 0, 0, 0};      //generic sensor 1
-EngineVariable engine_sr2   = {"SR2", 0.0, 0.0, 0.0, 999.0, 1, 0, 0, 0, 0};      //generic sensor 2
-EngineVariable engine_knk   = {"KNK", 0.0, 0.0, 0.0, 50.0, 1, 0, 0, 0, 0};       //knock ignition retard
-EngineVariable engine_vss   = {"VSS", 0.0, 0.0, 0.0, 140.0, 0, 0, 0, 0, 0};      //vehicle speed
-EngineVariable engine_tcr   = {"TCR", 0.0, 0.0, 0.0, 50.0, 1, 0, 0, 0, 0};       //traction control ignition retard
-EngineVariable engine_lct   = {"LCT", 0.0, 0.0, 0.0, 50.0, 1, 0, 0, 0, 0};       //launch control timing
+EngineVariable engine_map   = {"MAP", 0.0, 0.0, 15.0, 250.0, 1, 0, 0, 0, 0};        //manifold absolute pressure
+EngineVariable engine_rpm   = {"RPM", 0.0, 0.0, 700.0, 6000.0, 0, 0, 0, 0, 0};      //engine rpm
+EngineVariable engine_clt   = {"CLT", 0.0, 0.0, 20.0, 240.0, 0, 0, 0, 0, 0};        //coolant temp
+EngineVariable engine_tps   = {"TPS", 0.0, 0.0, 0.0, 100.0, 0, 0, 0, 0, 0};         //throttle position
+EngineVariable engine_pw1   = {"PW1", 0.0, 0.0, 0.0, 20.0, 2, 0, 0, 0, 0};          //injector pulse width bank 1
+EngineVariable engine_pw2   = {"PW2", 0.0, 0.0, 0.0, 20.0, 2, 0, 0, 0, 0};          //injector pulse width bank 2
+EngineVariable engine_iat   = {"IAT", 0.0, 0.0, 40.0, 150.0, 0, 0, 0, 0, 0};        //intake air temp aka 'mat'
+EngineVariable engine_adv   = {"ADV", 0.0, 0.0, 10.0, 40.0, 1, 0, 0, 0, 0};         //ignition advance
+EngineVariable engine_tgt   = {"TGT", 0.0, 0.0, 10.0, 20.0, 1, 0, 0, 0, 0};         //afr target
+EngineVariable engine_afr   = {"AFR", 0.0, 0.0, 10.0, 20.0, 1, 0, 0, 0, 0};         //air fuel ratio
+EngineVariable engine_ego   = {"EGO", 0.0, 0.0, 70.0, 130.0, 0, 0, 0, 0, 0};        //ego correction %
+EngineVariable engine_egt   = {"EGT", 0.0, 0.0, 0.0, 2000.0, 0, 0, 0, 0, 0};        //exhaust gas temp
+EngineVariable engine_pws   = {"PWS", 0.0, 0.0, 0.0, 20.0, 2, 0, 0, 0, 0};          //injector pulse width sequential
+EngineVariable engine_bat   = {"BAT", 0.0, 0.0, 11.0, 15.0, 1, 0, 0, 0, 0};         //battery voltage
+EngineVariable engine_sr1   = {"SR1", 0.0, 0.0, 0.0, 999.0, 1, 0, 0, 0, 0};         //generic sensor 1
+EngineVariable engine_sr2   = {"SR2", 0.0, 0.0, 0.0, 999.0, 1, 0, 0, 0, 0};         //generic sensor 2
+EngineVariable engine_knk   = {"KNK", 0.0, 0.0, 0.0, 50.0, 1, 0, 0, 0, 0};          //knock ignition retard
+EngineVariable engine_vss   = {"VSS", 0.0, 0.0, 0.0, 140.0, 0, 0, 0, 0, 0};         //vehicle speed
+EngineVariable engine_tcr   = {"TCR", 0.0, 0.0, 0.0, 50.0, 1, 0, 0, 0, 0};          //traction control ignition retard
+EngineVariable engine_lct   = {"LCT", 0.0, 0.0, 0.0, 50.0, 1, 0, 0, 0, 0};          //launch control timing
 //variables added from SensorHub instead of MegaSquirt:
-EngineVariable engine_spd   = {"SPD", 0.0, 0.0, 0.0, 140.0, 0, 0, 0, 0, 0};      //vehicle speed from SensorHub
+EngineVariable engine_spd   = {"SPD", 0.0, 0.0, 0.0, 140.0, 0, 0, 0, 0, 0};         //vehicle speed from SensorHub
+EngineVariable engine_trp   = {"TRP", 0.0, 0.0, 0.0, 16000000.0, 0, 0 ,0, 0, 0};    //trip odometer, expressed in vss pulses
