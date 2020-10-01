@@ -3,7 +3,9 @@
 #define CAN_ENGINE_ERROR_MSG_ID     500     //message id for engine sensors out of range and/or errors
 
 #define CAN_SH_VSS_MSG_ID           600     //message id for VSS from SensorHub
-#define CAN_SH_TRP_MSG_ID           605     //message id for trip odometer from SensorHub (recorded as pulses)
+#define CAN_SH_GPS_MSG_ID           601     //message id for gps coordinates from SensorHub
+#define CAN_SH_CLK_MSG_ID           602     //message id for date/time from SensorHub
+//#define CAN_SH_TRP_MSG_ID           605     //message id for trip odometer from SensorHub (recorded as pulses)
 
 #define CAN_ERROR_MSG_ID            911     //message id for errors related to can bus comms, etc.
 
@@ -18,7 +20,9 @@
 #define MSG_MS_PLUS4    4     // last element of array
 
 #define SH_BASE_ID      600     // first can msg id used by AutoCAN_SensorHub
-#define MSG_SH_BASE     0       //array index of TBD array to find the base id
+#define MSG_SH_BASE     0       //array index of TBD array to find the base id, contains vss
+#define MSG_SH_PLUS1    1       //contains gps coordinates
+#define MSG_SH_PLUS2    2       //contains gps date/time
 
 char *epasModeDescriptions[] = { "Manual Steering", "Firm Steering",  "Sport+ Steering", "Sport Steering", "Touring Steering", "Comfort Steering"};
 
