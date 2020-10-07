@@ -4,6 +4,10 @@
 
 #define CAN_SH_VSS_MSG_ID           600     //message id for VSS from SensorHub
 #define CAN_SH_CLK_MSG_ID           601     //message id for date/time from SensorHub
+#define CAN_SH_LAT_MSG_ID           602     //message id for gps latitude from SensorHub
+#define CAN_SH_LONG_MSG_ID          603     //message id for gps longitude from SensorHub
+#define CAN_SH_ALT_MSG_ID           604     //message id for gps alititude from SensorHub
+
 
 #define CAN_ERROR_MSG_ID            911     //message id for errors related to can bus comms, etc.
 
