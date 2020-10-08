@@ -25,8 +25,13 @@
 
 #define SH_BASE_ID      600     // first can msg id used by AutoCAN_SensorHub
 #define MSG_SH_BASE     0       //array index of TBD array to find the base id, contains vss
-#define MSG_SH_PLUS1    1       //contains gps coordinates
-#define MSG_SH_PLUS2    2       //contains gps date/time
+#define MSG_SH_PLUS1    1       //contains gps date/time
+#define MSG_SH_PLUS2    2       //contains gps latitude
+#define MSG_SH_PLUS3    3       //contains gps longitude
+#define MSG_SH_PLUS4    4       //contains gps alt and siv
+#define MSH_SH_PLUS5    5       //contains fuel and oil pressure
+#define MSH_SH_PLUS6    6       //contains accelerometer x/y/z
+#define MSH_SH_PLUS7    7       //contains compass heading and text direction
 
 char *epasModeDescriptions[] = { "Manual Steering", "Firm Steering",  "Sport+ Steering", "Sport Steering", "Touring Steering", "Comfort Steering"};
 
