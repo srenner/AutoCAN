@@ -8,7 +8,8 @@
 #define CAN_SH_LONG_MSG_ID          603     //message id for gps longitude from SensorHub
 #define CAN_SH_ALT_MSG_ID           604     //message id for gps alititude from SensorHub
 #define CAN_SH_PRES_MSG_ID          605     //message id for fuel and oil pressure from SensorHub
-
+#define CAN_SH_ACCEL_MSG_ID         606     //message id for accelerometer
+#define CAN_SH_COMPASS_MSG_ID       607     //message id for compass heading and text direction
 
 #define CAN_ERROR_MSG_ID            911     //message id for errors related to can bus comms, etc.
 
