@@ -1,4 +1,6 @@
 #define CAN_EPAS_MSG_ID             400     //message id when broadcasting a new epas steering mode
+#define CAN_EPAS_PCT_MSG_ID         401     //message id for the steering assist level 0-100%
+
 #define CAN_INFO_MSG_ID             411     //message id for messages on can bus
 #define CAN_ENGINE_ERROR_MSG_ID     500     //message id for engine sensors out of range and/or errors
 
