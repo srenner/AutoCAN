@@ -37,6 +37,18 @@
 
 char *epasModeDescriptions[] = { "Manual Steering", "Firm Steering",  "Sport+ Steering", "Sport Steering", "Touring Steering", "Comfort Steering"};
 
+char *compassDirections[] = {" N", "NE", " E", "SE", " S", "SW", " W", "NW", "  "}; //using spaces to optimize for right-justified display
+
+enum customCharacters {
+  charBlock1         = 0,
+  charBlock2         = 1,
+  charBlock3         = 2,
+  charBlock4         = 3,
+  charBlock5         = 4,
+  charMiddle         = 5,
+  charBlank          = 6
+};
+
 typedef struct {
     uint8_t hour;
     uint8_t minute;
