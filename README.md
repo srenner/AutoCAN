@@ -14,4 +14,4 @@ Extra automotive sensor inputs and outputs to avoid splicing into the vehicle's 
 Converts typical aftermarket electric power assist steering (EPAS) systems to be speed-sensitive
 
 #### [AutoCAN_Imaging](https://github.com/srenner/AutoCAN_Imaging)
-Compilation of tools used for forward and rear facing automotive cameras
+Raspberry Pi project to control in-car video and datalogs
