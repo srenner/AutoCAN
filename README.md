@@ -15,3 +15,6 @@ Converts typical aftermarket electric power assist steering (EPAS) systems to be
 
 #### [AutoCAN_Imaging](https://github.com/srenner/AutoCAN_Imaging)
 Raspberry Pi project to control in-car video display and dashcam recordings
+
+#### [AutoCAN_HVAC](https://github.com/srenner/AutoCAN_HVAC) (private repo)
+Controls a traditional radiator fan, intercooler or hood scoop fan, and electric heat
