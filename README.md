@@ -14,7 +14,7 @@ Extra automotive sensor inputs and outputs to avoid splicing into the vehicle's 
 Converts typical aftermarket electric power assist steering (EPAS) systems to be speed-sensitive
 
 #### [AutoCAN_Imaging](https://github.com/srenner/AutoCAN_Imaging)
-Raspberry Pi project to control in-car video display and dashcam recordings
+Raspberry Pi project to control in-car video display
 
 #### [AutoCAN_HVAC](https://github.com/srenner/AutoCAN_HVAC) (private repo)
 Controls a traditional radiator fan, intercooler or hood scoop fan, and electric heat
