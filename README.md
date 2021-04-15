@@ -11,7 +11,7 @@ Text-based automotive gauge for [MegaSquirt ECU](http://megasquirt.info/) with '
 Extra automotive sensor inputs and outputs to avoid splicing into the vehicle's main harness
 
 #### [AutoCAN_Epasuino](https://github.com/srenner/AutoCAN_Epasuino)
-Converts typical aftermarket electric power assist steering (EPAS) systems to be speed-sensitive
+Piggyback control module for aftermarket electric power assist steering (EPAS) systems
 
 #### [AutoCAN_Compute](https://github.com/srenner/AutoCAN_Compute)
 Raspberry Pi project to control in-car video display and more
